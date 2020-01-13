@@ -1,0 +1,49 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    mysql:
+      image: mysql:5.7
+      container_name: login-base-mysql
+      working_dir: /application
+      volumes:
+        - ./backend:/application
+        - ./backend/storage-db:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=bruno
+        - MYSQL_DATABASE=login
+        - MYSQL_USER=login
+        - MYSQL_PASSWORD=login
+      ports:
+        - "8086:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: login-base-webserver
+      working_dir: /application
+      volumes:
+          - ./backend:/application
+          - ./backend/phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8085:80"
+
+    php-fpm:
+      build: ./backend/phpdocker/php-fpm
+      container_name: login-base-php-fpm
+      working_dir: /application
+      volumes:
+        - ./backend/:/application
+        - ./backend/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+    
+    frontendlogin:
+      build: ./frontend2/angulardocker
+      command: npm start
+      container_name: login-base-frontend
+      working_dir: /application
+      ports:
+        - "4240:4240"
+
+        
+
