@@ -31,7 +31,7 @@ services:
 
     php-fpm:
       build: ./backend/phpdocker/php-fpm
-      command: bash -c "composer install && tail -f /dev/null"
+      command: bash -c "composer install && /usr/bin/php-fpm"
       container_name: login-base-php-fpm
       working_dir: /application
       volumes:
