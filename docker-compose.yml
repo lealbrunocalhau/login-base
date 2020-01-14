@@ -31,11 +31,14 @@ services:
 
     php-fpm:
       build: ./backend/phpdocker/php-fpm
+      command: composer install
       container_name: login-base-php-fpm
       working_dir: /application
       volumes:
         - ./backend/:/application
         - ./backend/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+
+
     frontendlogin:
       build: ./frontend2/angulardocker
       command: npm start
