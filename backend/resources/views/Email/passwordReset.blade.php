@@ -3,10 +3,10 @@
 
 Vai dar certo! Não perde o foco.
 
-@component('mail::button', ['url' => 'http://localhost:4200/response-password-reset?token='.$token])
+@component('mail::button', ['url' => 'http://localhost:4240/response-password-reset?token='.$token])
 Clique aqui para Reset
 @endcomponent
 
-Vamos com tudo, noix eh brabo!<br>
+Keep learning Bruno!!<br>
 {{ config('app.name') }}
 @endcomponent
