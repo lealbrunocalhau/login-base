@@ -8,7 +8,6 @@ RUN git clone https://github.com/lealbrunocalhau/login-base.git .
 
 WORKDIR /app/frontend2
 
-RUN npm install
-
+RUN npm install --silent
 
 CMD ["ng", "serve", "--port", "4240", "--host", "0.0.0.0"]
