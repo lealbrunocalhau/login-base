@@ -36,12 +36,11 @@ services:
       volumes:
         - ./backend/:/application
         - ./backend/phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
-    
     frontendlogin:
       build: ./frontend2/angulardocker
       command: npm start
       container_name: login-base-frontend
-      working_dir: /application
+      working_dir: /app/frontend2
       ports:
         - "4240:4240"
 
