@@ -40,12 +40,14 @@ services:
 
 
     frontendlogin:
-      build: ./frontend2/angulardocker
-      command: npm start
+      build: ./frontend/angulardocker
+      command: bash -c "npm install && npm start"
       container_name: login-base-frontend
-      working_dir: /app/frontend2
+      working_dir: /app
+      volumes:
+          - ./frontend:/app
       ports:
-        - "4240:4240"
+          - "4240:4240"
 
         
 
